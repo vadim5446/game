@@ -234,6 +234,12 @@ let options = {
         "Georgia",
         "Taiwan"
     ],
+    foods: [
+        "Ravioli",
+        "Baklava",
+        "Spaghetti",
+        "Shawarma",
+    ]
 };
 
 let winCount = 0;
