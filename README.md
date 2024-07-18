@@ -1,2 +1,2 @@
-# game
+# Hangman game
 START
