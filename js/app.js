@@ -216,6 +216,7 @@ let options = {
         "Shawarma",
     ]
 };
+
 //winCount keeps track of how many correct guesses the player has made
 let winCount = 0;
 //count keeps track of how many incorrect guesses the player has made
@@ -236,9 +237,11 @@ const displayOptions = () => {
     //append buttonCon div with option buttons to the optionsContainer element
     optionsContainer.appendChild(buttonCon);
 };
-//Block all the Buttons
+//Block all the Buttons function declaration
 const blocker = () => {
+    //find buttons with the class options and store them in a variable called optionsButtons
     let optionsButtons = document.querySelectorAll(".options");
+    //find all buttons with the class letters and store them in a variable called letterButtons.
     let letterButtons = document.querySelectorAll(".letters");
     //disable all options
     optionsButtons.forEach((button) => {
@@ -248,16 +251,21 @@ const blocker = () => {
     letterButtons.forEach((button) => {
         button.disabled = true;
     });
+    //function ensures that once the game is over, no further actions can be taken until the player starts a new game
     newGameContainer.classList.remove("hide");
 };
-//Word Generator
+//Word Generator takes on input called `optionValue`
 const generateWord = (optionValue) => {
+    //looking for all buttons labeled with the class "options" and storing them in the variable `optionsButtons`
     let optionsButtons = document.querySelectorAll(".options");
     //If options value matches the button innerText then highlight the button
+    //loop through each button
     optionsButtons.forEach((button) => {
+        console.log(button.innerText, optionValue)
         if (button.innerText.toLowerCase() === optionValue) {
             button.classList.add("active");
         }
+        //disable buttons regardless of whether it matches the chosen option
         button.disabled = true;
     });
     //initially hide letters, clear previous word
@@ -289,20 +297,22 @@ const initializer = () => {
         button.classList.add("letters");
         //Number to ASCII[A-Z]
         button.textContent = String.fromCharCode(i);
-        //character button click
+        //after character button click do the following
         button.addEventListener("click", () => {
+            //split chosen word into characters array
             let charArray = chosenWord.split("");
             let dashes = document.getElementsByClassName("dashes");
             //if array contains clicked value replace the matched dash with letter else draw on canvas
             if (charArray.includes(button.textContent)) {
+                //loop through each character in the chosen word to see if there is a match
                 charArray.forEach((char, index) => {
-                    //if character in array is same as clicked button
+                    //check if character in array is same as clicked button, if so, execute the following
                     if (char === button.textContent) {
-                        //replace dash with letter
+                        //reveal the letter in the corresponding spot
                         dashes[index].textContent = char;
                         //increment counter
                         winCount += 1;
-                        //if winCount equals word length
+                        //if winCount equals word length execute the following
                         if (winCount == charArray.length) {
                             resultText.innerHTML = `<h2 class='win-msg'>You Win!</h2><p>The word was <span>${chosenWord}</span></p>`;
                             //block all buttons
@@ -311,11 +321,11 @@ const initializer = () => {
                     }
                 });
             } else {
-                //Lose count
+                //Lose count, if chosen letter is not in the chosen word, increase the ccount of incorrect guesses
                 count += 1;
-                //for drawing man
+                //call `drawman(count)` for drawing a part of the hangman
                 drawMan(count);
-                //Count==6 because head, body, left arm, right arm, left leg, right leg
+                //if count reaches 6, display lose message and disable all buttons
                 if (count == 6) {
                     resultText.innerHTML = `<h2 class='lose-msg'>Game Over!</h2><p>The word was <span>${chosenWord}</span></p>`;
                     blocker();
@@ -414,7 +424,8 @@ const drawMan = (count) => {
     }
 };
 
-//New Game
+//New Game, when clicked, intializer function executes new game 
 newGameButton.addEventListener("click", initializer);
+//when page finishes loading `initialize` function executes
 window.onload = initializer;
 
