@@ -185,20 +185,22 @@
 //             break;
 //     }
 // };
-//To create the following code I had help from watching and following youtube, asking Chatgpt, and advising with classmates 
+//To create the following code I had help from watching and following youtube, asking Chatgpt, and advising with classmates
+//https://www.youtube.com/watch?v=dRzhwwXy-Sk&t=553s 
 //Initiate References
 const letterContainer = document.getElementById("letter-container");
 const optionsContainer = document.getElementById("options-container");
-const userInputSection = document.getElementById("user-input-section");
 //select HTML element with the id `user-input-section` and assign it constant `userInputSection`
-const newGameContainer = document.getElementById("new-game-container");
+const userInputSection = document.getElementById("user-input-section");
 //select HTML element with id `new-game-container` and assign it to constant `newGameContainer` to display new game button
+const newGameContainer = document.getElementById("new-game-container");
+//select HTML element with id `new-game-button` and assign it to constant `newGameButton` to start new game
 const newGameButton = document.getElementById("new-game-button");
-//select HTML element with id `new-game-button and assign` it to constant `newGameButton to start new game
-const canvas = document.getElementById("canvas");
 //select HTML element with id `canvas` and assign it to constant `canvas` to start new game
+const canvas = document.getElementById("canvas");
+//select HTML element with id `result-text` and assign it to constant `resultText` to display result and correct word
 const resultText = document.getElementById("result-text");
-////select HTML element with id `result-text` and assign it to constant `resultText` to display result and correct word
+
 //Options values for buttons
 let options = {
     countries: [
