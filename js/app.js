@@ -358,7 +358,9 @@ const canvasCreator = () => {
 
     const head = () => {
         context.beginPath();
+        //completes circle
         context.arc(70, 30, 10, 0, Math.PI * 2, true);
+        //draws circle
         context.stroke();
     };
 
@@ -381,7 +383,7 @@ const canvasCreator = () => {
     const rightLeg = () => {
         drawLine(70, 80, 90, 110);
     };
-    //initial frame
+    //initial frame 
     const initialDrawing = () => {
         //clear canvas
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -397,7 +399,7 @@ const canvasCreator = () => {
 
     return { initialDrawing, head, body, leftArm, rightArm, leftLeg, rightLeg };
 };
-//draw the man
+//draw the man, defined by arrow function called `drawMan`
 const drawMan = (count) => {
     let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
     switch (count) {
