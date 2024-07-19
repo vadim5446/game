@@ -1,32 +1,4 @@
-/*-------------- Constants -------------*/
-
-// const choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-// const letterContainer = document.getElementById("letter-container");
-// const optionsContainer = document.getElementById("options-container");
-// const userInputSection = document.getElementById("user-input-section");
-// const newGameContainer = document.getElementById("new-game-container");
-// const newGameButton = document.getElementById("new-game-button");
-// const canvas = document.getElementById("canvas");
-// const resultText = document.getElementById("result-text");
-
-// /*---------- Variables (state) ---------*/
-// let options = {
-//     countries: [
-//         "Argentina",
-//         "Scotland",
-//         "Georgia",
-//         "Taiwan"
-//     ],
-// };
-
-// let winCount = 0;
-// let count = 0;
-
-// let chosenWord = "";
-
-// const displayOptions = () => {
-//     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
+// const displayOptions = () => {    //     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
 //     let buttonCon = document.createElement("div");
 //     for (let value in options) {
 //         buttonCon.innerHTML += `<button class="options" onclick="generate Word('${value}')">${value}</button>`;
@@ -70,8 +42,7 @@
 
 //     userInputSection.innerHTML = displayItem;
 // };
-// /*----- Cached Element References  -----*/
-// /*-------------- Functions -------------*/
+
 // const initializer = () => {
 //     winCount = 0;
 //     count = 0;
@@ -214,16 +185,20 @@
 //             break;
 //     }
 // };
-
+//To create the following code I had help from watching and following youtube, asking Chatgpt, and advising with classmates 
 //Initiate References
 const letterContainer = document.getElementById("letter-container");
 const optionsContainer = document.getElementById("options-container");
 const userInputSection = document.getElementById("user-input-section");
+//select HTML element with the id `user-input-section` and assign it constant `userInputSection`
 const newGameContainer = document.getElementById("new-game-container");
+//select HTML element with id `new-game-container` and assign it to constant `newGameContainer` to display new game button
 const newGameButton = document.getElementById("new-game-button");
+//select HTML element with id `new-game-button and assign` it to constant `newGameButton to start new game
 const canvas = document.getElementById("canvas");
+//select HTML element with id `canvas` and assign it to constant `canvas` to start new game
 const resultText = document.getElementById("result-text");
-
+////select HTML element with id `result-text` and assign it to constant `resultText` to display result and correct word
 //Options values for buttons
 let options = {
     countries: [
@@ -239,17 +214,24 @@ let options = {
         "Shawarma",
     ]
 };
-//count
+//winCount keeps track of how many correct guesses the player has made
 let winCount = 0;
+//count keeps track of how many incorrect guesses the player has made
 let count = 0;
+//chosenWord stores the word that the player is trying to guess
 let chosenWord = "";
 //Display option buttons
 const displayOptions = () => {
+    //set the HTML content of the optionsContainer element to a heading with the text "Please Select An Option" to clear any existing content in `optionsContainer`
     optionsContainer.innerHTML = `<h3>Please Select An Option</h3>`;
+    //create new div element and assign it to the variable buttonCon to contain option buttons
     let buttonCon = document.createElement("div");
+    //start a for...in loop that iterates over the properties of the options object
     for (let value in options) {
+        //add button element to buttonCon div for each property in the options object
         buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
     }
+    //append buttonCon div with option buttons to the optionsContainer element
     optionsContainer.appendChild(buttonCon);
 };
 //Block all the Buttons
