@@ -187,7 +187,7 @@
 // };
 //To create the following code I had help from watching and following youtube, asking Chatgpt, and advising with classmates
 //https://www.youtube.com/watch?v=dRzhwwXy-Sk&t=553s 
-//Initiate References
+//Initial section to capture HTML tags or DOM elements by id
 const letterContainer = document.getElementById("letter-container");
 const optionsContainer = document.getElementById("options-container");
 //select HTML element with the id `user-input-section` and assign it constant `userInputSection`
@@ -201,7 +201,7 @@ const canvas = document.getElementById("canvas");
 //select HTML element with id `result-text` and assign it to constant `resultText` to display result and correct word
 const resultText = document.getElementById("result-text");
 
-//Options values for buttons
+//object with options for the game, values for buttons
 let options = {
     countries: [
         "Argentina",
@@ -254,12 +254,12 @@ const blocker = () => {
     //function ensures that once the game is over, no further actions can be taken until the player starts a new game
     newGameContainer.classList.remove("hide");
 };
-//Word Generator takes on input called `optionValue`
+//Define the funcction, Word Generator takes on input called `optionValue`
 const generateWord = (optionValue) => {
     //looking for all buttons labeled with the class "options" and storing them in the variable `optionsButtons`
     let optionsButtons = document.querySelectorAll(".options");
     //If options value matches the button innerText then highlight the button
-    //loop through each button
+    //loops through each button
     optionsButtons.forEach((button) => {
         console.log(button.innerText, optionValue)
         if (button.innerText.toLowerCase() === optionValue) {
@@ -268,20 +268,20 @@ const generateWord = (optionValue) => {
         //disable buttons regardless of whether it matches the chosen option
         button.disabled = true;
     });
-    //initially hide letters, clear previous word
+    //removes hiding of letters, makes them visible, and clears previous content
     letterContainer.classList.remove("hide");
     userInputSection.textContent = "";
 
     let optionArray = options[optionValue];
-    //chose random word
+    //choses a number randomly from the category and rounds it down
     chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
     chosenWord = chosenWord.toUpperCase();
-    //replace every letter with span containing dash
+    //creates dashs for the placement of letters
     let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
-    //Display each element as span
+    //Dashes are displayed in the user input section
     userInputSection.innerHTML = displayItem;
 };
-//Initial Function (called when page loads/user presses new game)
+//Initial Function, game intialized (called when page loads/user presses new game)
 const initializer = () => {
     winCount = 0;
     count = 0;
@@ -291,18 +291,19 @@ const initializer = () => {
     letterContainer.classList.add("hide");
     newGameContainer.classList.add("hide");
     letterContainer.textContent = "";
-    //For creating letter buttons
+    //creating new buttons for the letters
     for (let i = 65; i < 91; i++) {
         let button = document.createElement("button");
         button.classList.add("letters");
         //Number to ASCII[A-Z]
         button.textContent = String.fromCharCode(i);
-        //after character button click do the following
+        //Adds a click event for each button
         button.addEventListener("click", () => {
-            //split chosen word into characters array
+            //split chosen word into an array of letters
             let charArray = chosenWord.split("");
+            //Gets the elements representing the dashes (hidden letters) in the word
             let dashes = document.getElementsByClassName("dashes");
-            //if array contains clicked value replace the matched dash with letter else draw on canvas
+            //check for the letter, if array contains clicked value replace the matched dash with letter else draw on canvas
             if (charArray.includes(button.textContent)) {
                 //loop through each character in the chosen word to see if there is a match
                 charArray.forEach((char, index) => {
@@ -310,7 +311,7 @@ const initializer = () => {
                     if (char === button.textContent) {
                         //reveal the letter in the corresponding spot
                         dashes[index].textContent = char;
-                        //increment counter
+                        //Update the win count
                         winCount += 1;
                         //if winCount equals word length execute the following
                         if (winCount == charArray.length) {
@@ -331,9 +332,10 @@ const initializer = () => {
                     blocker();
                 }
             }
-            //disable clicked button
+            //disable clicked letter button
             button.disabled = true;
         });
+        //makes button appear on screen
         letterContainer.append(button);
     }
 
