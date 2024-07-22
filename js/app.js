@@ -121,73 +121,10 @@
 //      context.beginPath();
 //      context.arc(70, 30, 10, 0, Math.PI * 2, true);
 //      context.stroke();
-//    };
-
-//    const body = () => {
-//      drawLine(70, 40, 70, 80);
-//    };
-
-//    const leftArm = () => {
-//      drawLine(70, 50, 50, 70);
-//    };
-
-//    const rightArm = () => {
-//      drawLine(70, 50, 90, 70);
-//    };
-
-//    const leftLeg = () => {
-//      drawLine(70, 80, 50, 110);
-//    };
-
-//    const rightLeg = () => {
-//      drawLine(70, 80, 90, 110);
-//    };
-
-
-//    const initialDrawing = () => {
-
-//      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-
-//      drawLine(10, 130, 130, 130);
-
-//      drawLine(10, 10, 10, 131);
-
-//      drawLine(10, 10, 70, 10);
-
-//      drawLine(70, 10, 70, 20);
-//    };
-
-//    return { initialDrawing, head, body, leftArm, rightArm, leftLeg, rightLeg };
-//  };
-
-//  const drawMan = (count) => {
-//     let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
-//     switch (count) {
-//         case 1:
-//             head();
-//             break;
-//         case 2:
-//             body();
-//             break;
-//         case 3:
-//             leftArm();
-//             break;
-//         case 4:
-//             rightArm();
-//             break;
-//         case 5:
-//             leftLeg();
-//             break;
-//         case 6:
-//             rightLeg();
-//             break;
-//         default:
-//             break;
-//     }
-// };
+//    }
 //To create the following code I had help from watching and following youtube, asking Chatgpt, and advising with classmates
 //https://www.youtube.com/watch?v=dRzhwwXy-Sk&t=553s 
-//Initial section to capture HTML tags or DOM elements by id
+//HTML elements stored in consts, by id to be manipulated
 const letterContainer = document.getElementById("letter-container");
 const optionsContainer = document.getElementById("options-container");
 //select HTML element with the id `user-input-section` and assign it constant `userInputSection`
